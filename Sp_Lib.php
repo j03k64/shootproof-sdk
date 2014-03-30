@@ -59,9 +59,11 @@ class Sp_Lib
 
 		// the API response
 		$response = curl_exec($curl);
+    $info = curl_getinfo($curl);
+
 
 		if (!$response) {
-			throw new Exception('The API did not return any response.');
+			throw new Exception('The API did not return any response. Error #' . $info['http_code']);
 		}
 
 		$json = json_decode($response, true);

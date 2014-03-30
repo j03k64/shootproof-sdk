@@ -42,6 +42,43 @@ class Sp_Api extends Sp_Lib
 	}
 
 	/**
+	 * Method to set a studio setting
+	 *
+	 * @param string $varName
+	 * @param string $value
+	 * @return array
+	 */
+	public function setStudioSetting($varName, $value = null)
+	{
+		$params = array(
+			'method' => 'sp.studio.set_setting',
+			'setting_key' => $varName,
+			'setting_value' => $value
+		);
+
+		return $this->_makeApiRequest($params);
+	}
+
+
+	/**
+	 * Method to set a studio setting
+	 *
+	 * @param string $varName
+	 * @param string $value
+	 * @return array
+	 */
+	public function getStudioSetting($varName)
+	{
+		$params = array(
+			'method' => 'sp.studio.get_setting',
+			'setting_key' => $varName
+		);
+
+		return $this->_makeApiRequest($params);
+	}
+
+
+	/**
 	 * Method to return all the open events for a studio
 	 *
 	 * @return array

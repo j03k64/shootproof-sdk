@@ -27,7 +27,7 @@ class Sp_Auth extends Sp_Lib
      *
      * @var string
      */
-    protected $_redirectUri = 'path to file/complete.php';
+    protected $_redirectUri;
 
     /*
      * Property for scope
@@ -35,14 +35,15 @@ class Sp_Auth extends Sp_Lib
      *
      * @var string
      */
-    protected $_scope = "sp.studio.info sp.event.get_list sp.event.create sp.event.photo_exists sp.event.get_photos sp.album.get_list sp.album.create sp.album.get_photos sp.photo.upload sp.photo.delete sp.photo.update sp.order.get_list sp.order.get_details sp.album.move sp.album.rename sp.album.delete sp.event.rename";
+    protected $_scope = "sp.studio.info sp.studio.get_setting sp.studio.set_setting sp.event.get_list sp.event.create sp.event.photo_exists sp.event.get_photos sp.album.get_list sp.album.create sp.album.get_photos sp.photo.upload sp.photo.delete sp.photo.update sp.order.get_list sp.order.get_details sp.album.move sp.album.rename sp.album.delete sp.event.rename";
 
     /**
      * Property to hold the appId / Client Id
      *
      * @var string
      */
-    protected $_clientId = 'XXXXX';
+    protected $_clientId;
+
 
 	/**
 	 * Method to get the appId
@@ -54,6 +55,7 @@ class Sp_Auth extends Sp_Lib
 		return $this->_clientId;
 	}
 
+
 	/**
 	 * Method to return the redirect uri
 	 *
@@ -64,6 +66,7 @@ class Sp_Auth extends Sp_Lib
 		return $this->_redirectUri;
     }
 
+
 	/**
 	 * Method to return the scope
 	 *
@@ -73,6 +76,46 @@ class Sp_Auth extends Sp_Lib
 	{
 		return $this->_scope;
     }
+
+
+    /**
+     * Sp_Auth constructor
+     *
+     * @param string $clientID
+     * @param string $redirectUri
+     */
+    public function __construct($clientId = null, $redirectUri = null)
+    {
+        $this->_clientId = $clientId;
+        $this->_redirectUri = $redirectUri;
+    }
+
+
+    /**
+     * Set the appId / Client Id
+     *
+     * @param string $clientId
+     * @return Sp_Auth
+     */
+    public function setClientId($clientId)
+    {
+        $this->_clientId = $clientId;
+        return $this;
+    }
+
+
+    /**
+     * Set the redirect uri
+     *
+     * @param string $uri uri to redirec to after auth
+     * @return Sp_Auth
+     */
+    public function setRedirectUri($uri)
+    {
+        $this->_redirectUri = $uri;
+        return $this;
+    }
+
 
     /**
      * Method to get the login uri
