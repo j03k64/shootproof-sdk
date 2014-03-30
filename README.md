@@ -12,3 +12,11 @@ You will need to add this to your composer.json file.  I don't want to submit th
         }
     ]
 ```
+
+along with actually requiring that SDK:
+```json
+   "require": {
+      "jpirkey/shootproof-sdk" : "dev-master"
+   }
+
+```
